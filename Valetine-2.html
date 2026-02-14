@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For My Dearest ❤️</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
         :root {
             --primary-blue: #0077ff;
@@ -28,9 +29,26 @@
             min-height: 100vh;
             padding: 20px;
             overflow-x: hidden;
+            position: relative; /* Needed for background hearts */
+        }
+
+        /* 2. Background Heart Animation */
+        .bg-heart {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.15);
+            font-size: 20px;
+            z-index: 0;
+            animation: floatUp 10s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(110vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
         }
 
         .container {
+            position: relative;
+            z-index: 1; /* Sits above the floating hearts */
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
@@ -44,17 +62,24 @@
             animation: fadeIn 1.2s ease-out;
         }
 
-        h1 {
-            color: var(--light-blue);
-            font-size: clamp(1.5rem, 8vw, 2.5rem);
-            margin-bottom: 1rem;
-        }
-
         .flower-hero {
             width: 100%;
             max-width: 200px;
             margin: 0 auto 1.5rem;
             filter: drop-shadow(0 0 15px rgba(0, 119, 255, 0.5));
+            /* 3. Subtle floating animation for the flowers */
+            animation: hoverEffect 3s ease-in-out infinite;
+        }
+
+        @keyframes hoverEffect {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            color: var(--light-blue);
+            font-size: clamp(1.5rem, 8vw, 2.5rem);
+            margin-bottom: 1rem;
         }
 
         .photo-grid {
@@ -74,6 +99,11 @@
             transition: transform 0.3s ease;
         }
 
+        /* 4. Little pop when she hovers over photos */
+        .photo-grid img:hover {
+            transform: scale(1.05);
+        }
+
         .personal-note {
             display: none;
             background: rgba(255, 255, 255, 0.95);
@@ -87,7 +117,6 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        /* Nav Buttons */
         .nav-btn {
             width: 100%;
             padding: 16px;
@@ -102,7 +131,6 @@
             margin-bottom: 10px;
         }
 
-        /* Proposal Section Styling */
         .proposal-area {
             margin-top: 2rem;
             padding-top: 1rem;
@@ -120,7 +148,7 @@
             justify-content: center;
             align-items: center;
             gap: 20px;
-            min-height: 100px; /* Space for growing button */
+            min-height: 100px;
             flex-wrap: wrap;
         }
 
@@ -204,6 +232,19 @@
     </div>
 
     <script>
+        // 5. Script to generate floating hearts
+        function createHearts() {
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'bg-heart';
+                heart.innerHTML = '💙';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDelay = Math.random() * 8 + 's';
+                document.body.appendChild(heart);
+            }
+        }
+        createHearts();
+
         function showSection(id) {
             const el = document.getElementById(id);
             el.style.display = el.style.display === 'grid' || el.style.display === 'block' ? 'none' : (id === 'photo-grid' ? 'grid' : 'block');
@@ -215,27 +256,25 @@
         function makeYesBigger() {
             const yesBtn = document.getElementById('yesBtn');
             const noBtn = document.getElementById('noBtn');
-            
-            // Increase Yes size
             yesFontSize += 0.5;
             yesBtn.style.fontSize = yesFontSize + "rem";
             yesBtn.style.padding = (15 + (yesFontSize * 5)) + "px " + (30 + (yesFontSize * 10)) + "px";
-
-            // Decrease No size
             noScale -= 0.15;
             noBtn.style.transform = `scale(${noScale})`;
-            
-            if (noScale <= 0.2) {
-                noBtn.style.display = 'none';
-            }
+            if (noScale <= 0.2) noBtn.style.display = 'none';
         }
 
         function congratulate() {
             document.getElementById('proposal-content').style.display = 'none';
             document.getElementById('celebration').style.display = 'block';
             
-            // Add extra console/alert fun if you want
-            console.log("She said YES!");
+            // 6. Trigger Confetti
+            confetti({
+                particleCount: 150,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#0077ff', '#ffffff', '#2ecc71']
+            });
         }
     </script>
 </body>
