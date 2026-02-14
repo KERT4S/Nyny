@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Dearest ❤️</title>
+    <style>
+        :root {
+            --primary-blue: #0077ff;
+            --deep-blue: #003366;
+            --light-blue: #e0f0ff;
+            --white: #ffffff;
+            --success-green: #2ecc71;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: linear-gradient(135deg, #001f3f 0%, #0074d9 100%);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 550px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        h1 {
+            color: var(--light-blue);
+            font-size: clamp(1.5rem, 8vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .flower-hero {
+            width: 100%;
+            max-width: 200px;
+            margin: 0 auto 1.5rem;
+            filter: drop-shadow(0 0 15px rgba(0, 119, 255, 0.5));
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin: 1.5rem 0;
+            display: none;
+        }
+
+        .photo-grid img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 2px solid var(--light-blue);
+            transition: transform 0.3s ease;
+        }
+
+        .personal-note {
+            display: none;
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--deep-blue);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 1.5rem;
+            text-align: left;
+            font-style: italic;
+            line-height: 1.6;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Nav Buttons */
+        .nav-btn {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            background-color: var(--primary-blue);
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 10px;
+        }
+
+        /* Proposal Section Styling */
+        .proposal-area {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .question-text {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .btn-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            min-height: 100px; /* Space for growing button */
+            flex-wrap: wrap;
+        }
+
+        #yesBtn {
+            background-color: var(--success-green);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #noBtn {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #celebration {
+            display: none;
+            margin-top: 20px;
+            font-size: 1.8rem;
+            color: gold;
+            text-shadow: 0 0 10px rgba(255,215,0,0.5);
+            animation: bounce 0.5s infinite alternate;
+        }
+
+        @keyframes bounce { from { transform: translateY(0); } to { transform: translateY(-10px); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (min-width: 768px) {
+            .btn-row { display: flex; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="flowers.png" alt="LEGO Flowers" class="flower-hero">
+        <h1>Happy Valentine's! 💙</h1>
+        
+        <div class="btn-row">
+            <button class="nav-btn" onclick="showSection('photo-grid')">Our Moments</button>
+            <button class="nav-btn" onclick="showSection('personal-note')">Read My Note</button>
+        </div>
+
+        <div class="photo-grid" id="photo-grid">
+            <img src="Her.jpeg" alt="Moment 1">
+            <img src="us.jpeg" alt="Moment 2">
+            <img src="Her Blue.jpeg" alt="Moment 3">
+        </div>
+
+        <div class="personal-note" id="personal-note">
+            <strong>My Dearest,</strong><br><br>
+            HAPPY VALENTINEEEE DAYYYY SAYANGGGGGGGG. Me is want to say that Im proud of us, especially you. You have stayed with me through 
+            tough and easy times. Im lucky to have you as my wife and valentine sayanggggg. I know we couldn't meet today sooo here is a website 
+            to show you I really appreciate and loveeee youuuuu sayanggggg. No one else will ever everrrr take me from you sayanggggg. 
+            Im thankfull and lucky that you are mine.
+        </div>
+
+        <div class="proposal-area">
+            <div id="proposal-content">
+                <p class="question-text">Will you be my Valentine?</p>
+                <div class="btn-wrap">
+                    <button id="yesBtn" onclick="congratulate()">YES! 😍</button>
+                    <button id="noBtn" onclick="makeYesBigger()">No 😢</button>
+                </div>
+            </div>
+            <div id="celebration">
+                YEEEEEEEEAYYYY! ME LOOOOVVVVVEEEEEEE YOUUUU SAYAAAANGGGGGGGGG! 💖✨
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(id) {
+            const el = document.getElementById(id);
+            el.style.display = el.style.display === 'grid' || el.style.display === 'block' ? 'none' : (id === 'photo-grid' ? 'grid' : 'block');
+        }
+
+        let yesFontSize = 1.2;
+        let noScale = 1;
+
+        function makeYesBigger() {
+            const yesBtn = document.getElementById('yesBtn');
+            const noBtn = document.getElementById('noBtn');
+            
+            // Increase Yes size
+            yesFontSize += 0.5;
+            yesBtn.style.fontSize = yesFontSize + "rem";
+            yesBtn.style.padding = (15 + (yesFontSize * 5)) + "px " + (30 + (yesFontSize * 10)) + "px";
+
+            // Decrease No size
+            noScale -= 0.15;
+            noBtn.style.transform = `scale(${noScale})`;
+            
+            if (noScale <= 0.2) {
+                noBtn.style.display = 'none';
+            }
+        }
+
+        function congratulate() {
+            document.getElementById('proposal-content').style.display = 'none';
+            document.getElementById('celebration').style.display = 'block';
+            
+            // Add extra console/alert fun if you want
+            console.log("She said YES!");
+        }
+    </script>
+</body>
+</html>
