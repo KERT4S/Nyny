@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Sayang | Our Memory Lane</title>
+    <style>
+        :root {
+            --primary-pink: #ffb7c5;
+            --deep-rose: #ff4d6d;
+            --soft-white: #fff5f7;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--soft-white);
+            color: #444;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        h1 { color: var(--deep-rose); margin-bottom: 10px; }
+        
+        /* Image/Letter Styling */
+        .letter-image {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin: 20px 0;
+        }
+
+        /* Countdown Styles */
+        #countdown-box {
+            background: var(--primary-pink);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        .timer {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .unit { font-size: 0.7rem; display: block; text-transform: uppercase; margin-top: 5px; }
+
+        /* Memory Section */
+        .valentine-archive {
+            margin-top: 40px;
+            border-top: 2px dashed var(--primary-pink);
+            padding-top: 20px;
+        }
+        .valentine-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: var(--deep-rose);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .valentine-link:hover {
+            background-color: #e63958;
+            transform: scale(1.05);
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: #bbb;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>To My Sayang</h1>
+    <p>I am really sorry for being distracted by games earlier.</p>
+
+    <img src="Letter.png" alt="My Letter to You" class="letter-image">
+
+    <div id="countdown-box">
+        <h3 style="margin-top:0;">Days Until March 7th</h3>
+        <div class="timer" id="timer">
+            <div><span id="days">00</span><span class="unit">Days</span></div>
+            <div><span id="hours">00</span><span class="unit">Hours</span></div>
+            <div><span id="mins">00</span><span class="unit">Mins</span></div>
+            <div><span id="secs">00</span><span class="unit">Secs</span></div>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 15px;">Counting down to the moment I see you again.</p>
+    </div>
+
+    <div class="valentine-archive">
+        <h2>Valentine's Archive</h2>
+        <p>Every day since August 20, 2024, is special to me.</p>
+        <p style="font-style: italic; font-size: 0.9rem;">Check back on the website I made for you earlier this month:</p>
+        <a href="Valetine-2.html" class="valentine-link" target="_blank">View Valentine's Site</a>
+    </div>
+
+    <div class="footer">
+        Created by your Husbaby
+    </div>
+</div>
+
+<script>
+    // Target: March 7, 2026
+    const targetDate = new Date("March 7, 2026 00:00:00").getTime();
+
+    const updateTimer = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerText = days.toString().padStart(2, '0');
+        document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+        document.getElementById("mins").innerText = minutes.toString().padStart(2, '0');
+        document.getElementById("secs").innerText = seconds.toString().padStart(2, '0');
+
+        if (distance < 0) {
+            clearInterval(updateTimer);
+            document.getElementById("timer").innerHTML = "I'M FINALLY WITH YOU!";
+        }
+    }, 1000);
+</script>
+
+</body>
+</html>
